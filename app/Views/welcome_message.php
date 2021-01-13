@@ -9,7 +9,7 @@
 
 	<!-- STYLES -->
 
-	<style {csp-style-nonce}>
+	<style {csp-style-nonce}>  
 		* {
 			transition: background-color 300ms ease, color 300ms ease;
 		}
