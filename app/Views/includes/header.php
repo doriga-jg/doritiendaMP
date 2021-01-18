@@ -22,7 +22,7 @@
 </head>
 
 <body>
-    <header>
+    <header class="sticky-top">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="row align-items-center">
                 <div class="col-md-2">

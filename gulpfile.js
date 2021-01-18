@@ -1,99 +1,79 @@
-var gulp        = require('gulp');
-const minifyCss = require('gulp-clean-css');
-//var coffe          = require('gulp-coffee');
-var sass        = require('gulp-sass');
-var notify      = require('gulp-notify');
-var browserSync = require('browser-sync');
-const { parallel } = require('gulp');
-var reload      = browserSync.reload;
+// Load Gulp
+const { src, dest, task, watch, series, parallel } = require('gulp');
 
-var paths = {
-    php:'app/Views/**/*.php',
-    css:'app/public/dev_assets/scss/**/*.scss',
-    script:'app/public/dev_assets/js/**/*.js'
+// CSS related plugins
+var sass         = require( 'gulp-sass' );
+var autoprefixer = require( 'gulp-autoprefixer' );
+
+// Utility plugins
+var rename       = require( 'gulp-rename' );
+var sourcemaps   = require( 'gulp-sourcemaps' );
+var notify       = require( 'gulp-notify' );
+var plumber      = require( 'gulp-plumber' );
+var options      = require( 'gulp-options' );
+var gulpif       = require( 'gulp-if' );
+
+// Browers related plugins
+var browserSync  = require( 'browser-sync' ).create();
+
+// Project related variables
+var styleSRC     = './public/dev_assets/scss/_base/_base.scss'
+var styleURL     = './dist/css/';
+var mapURL       = './';
+
+var phpSRC     = './app/Views/**/*.php'
+var phpURL     = './dist/';
+
+var phpWatch     = './app/Views/**/*.php'
+var styleWatch   = './public/dev_assets/scss/**/*.scss';
+
+
+// Tasks
+function browser_sync() {
+	browserSync.init({
+		proxy:"localhost/doritienda/public",
+        port: 8080
+    });
+}
+
+function reload(done) {
+	browserSync.reload();
+	done();
+}
+
+function css(done) {
+	src( [ styleSRC ] )
+		.pipe( sourcemaps.init() )
+		.pipe( sass({
+			errLogToConsole: true,
+			outputStyle: 'compressed'
+		}) )
+		.on( 'error', console.error.bind( console ) )
+		.pipe( autoprefixer({ browsers: [ 'last 2 versions', '> 5%', 'Firefox ESR' ] }) )
+		.pipe( rename( { suffix: '.min' } ) )
+		.pipe( sourcemaps.write( mapURL ) )
+		.pipe( dest( styleURL ) )
+		.pipe( browserSync.stream() );
+	done();
 };
 
-// css task
 
-gulp.task('mincss', function(){
+function triggerPlumber( src_file, dest_file ) {
+	return src( src_file )
+		.pipe( plumber() )
+		.pipe( dest( dest_file ) );
+}
 
-    return gulp.src(paths.css)
+function php() {
+	return triggerPlumber( phpSRC, phpURL );
+};
 
-        .pipe(sass().on('error', sass.logError))
+function watch_files() {
+	watch(styleWatch, series(css, reload));
+	watch(phpWatch, series(php, reload));
+}
 
-        .pipe(minifyCss())
-
-        .pipe(gulp.dest('main'))
-
-        .pipe(reload({stream:true}));
-
-});
-
-// ////////////////////////////////////////////////
-// HTML task
-// ///////////////////////////////////////////////
-
-gulp.task('php', function(){
-    gulp.src(paths.php)
-    .pipe(reload({stream:true}));
-});
-
-
-// Javascrit task
-
-gulp.task('scripts', function(){
-
-    return gulp.src(paths.script)
-
-        .pipe(coffee())
-
-        .pipe(gulp.dest('js'))
-
-        .pipe(reload({stream:true}));
-
-});
-
-// ////////////////////////////////////////////////
-// Browser-Sync Tasks
-// // /////////////////////////////////////////////
-
-gulp.task('browserSync', function() {
-    browserSync({
-        server: {
-            baseDir: "./"
-        },
-        port: 8080,
-        open: true,
-        notify: false
-    });
-});
-
-/*gulp.task('browserSync', function() {
-    browserSync.init({
-        server: {
-            baseDir: "./"
-        }, 
-        port: 8080,
-        open:true,
-        notify: false
-    }); 
-});*/
-
-// BrowserSync Reload
-/*function browserSyncReload(done) {
-    browsersync.reload();
-    done();
-}*/
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-gulp.task('watcher',function(){
-
-    gulp.watch(paths.css, gulp.series('mincss'));
-    gulp.watch(paths.script, gulp.series('scripts'));
-    gulp.watch(paths.php, gulp.series('php'/*, browserSyncReload*/));
-
-});
-
-gulp.task('default', gulp.parallel('browserSync', 'watcher'));
+task("css", css);
+task("php", php);
+task("default", parallel(css, php));
+task("watch", parallel(browser_sync, watch_files));
