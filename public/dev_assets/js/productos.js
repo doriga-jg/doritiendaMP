@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $("#myBtn").click(function(){
+    $(".modalBtn").click(function(){
         $("#myModal").modal();
     });
 });

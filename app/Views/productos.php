@@ -14,7 +14,7 @@
     <section class="d-flex flex-column pt-3 pb-4" style="background-color: #eee;">
         <div class="d-flex flex-column align-self-center justify-content-center w-75 h-auto pr-4 pl-4 pt-3 pb-5 border rounded" style="background-color: white;">
             <p class="font-weight-bold w-auto">Mostrando todos los productos (6)</p>
-            <div class="d-flex w-auto pt-4"><?php for ($i=1; $i<=4; $i++) { ?>
+            <div class="d-flex align-self-center pt-4"><?php for ($i=1; $i<=4; $i++) { ?>
                 <div class="d-flex flex-column shadow border border-secondary pl-3 pr-3 pb-3 mr-4" style="border-radius: 10px">
                     <svg xmlns="http://www.w3.org/2000/svg" width="90" height="120" fill="currentColor" class="d-flex align-self-center bi bi-file-earmark-image-fill" viewBox="0 0 16 16">
                         <path d="M4 0h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707v5.586l-2.73-2.73a1 1 0 0 0-1.52.127l-1.889 2.644-1.769-1.062a1 1 0 0 0-1.222.15L2 12.292V2a2 2 0 0 1 2-2zm5.5 1.5v2a1 1 0 0 0 1 1h2l-3-3zm-1.498 4a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0z"/>
@@ -24,7 +24,7 @@
                     <p class="mb-0">Nombre del producto</p>
                     <p>$390</p>
                     <a href="#">
-                        <button class="btn btn-outline-dark" style="border-radius: 20px; height: 40px; width: 180px">
+                        <button id="myBtn" type="button" data-toggle="modal" data-target="myModal" class="modalBtn btn btn-outline-dark" style="border-radius: 20px; height: 40px; width: 180px">
                             Añadir al carrito
                             <span class="ml-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
@@ -36,7 +36,7 @@
                 </div>
             <?php } ?>
             </div>
-            <div class="d-flex w-auto pt-4"><?php for ($i=1; $i<=2; $i++) { ?>
+            <div class="d-flex align-self-center pt-4"><?php for ($i=1; $i<=2; $i++) { ?>
                 <div class="d-flex flex-column shadow border border-secondary pl-3 pr-3 pb-3 mr-4" style="border-radius: 10px">
                     <svg xmlns="http://www.w3.org/2000/svg" width="90" height="120" fill="currentColor" class="d-flex align-self-center bi bi-file-earmark-image-fill" viewBox="0 0 16 16">
                         <path d="M4 0h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707v5.586l-2.73-2.73a1 1 0 0 0-1.52.127l-1.889 2.644-1.769-1.062a1 1 0 0 0-1.222.15L2 12.292V2a2 2 0 0 1 2-2zm5.5 1.5v2a1 1 0 0 0 1 1h2l-3-3zm-1.498 4a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0z"/>
@@ -46,7 +46,7 @@
                     <p class="mb-0">Nombre del producto</p>
                     <p>$390</p>
                     <a href="#">
-                        <button class="btn btn-outline-dark" style="border-radius: 20px; height: 40px; width: 180px">
+                        <button id="myBtn" type="button" data-toggle="modal" data-target="myModal" class="modalBtn btn btn-outline-dark" style="border-radius: 20px; height: 40px; width: 180px">
                             Añadir al carrito
                             <span class="ml-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
@@ -56,14 +56,11 @@
                         </button>
                     </a>
                 </div>
+            <?php } for ($i=0; $i < 2 ; $i++) { ?>
+                <div style="width: 238px; height: 257px;"></div>
             <?php } ?>
             </div>
         </div>
-
-        <!-- Button trigger modal -->
-        <button id="myBtn" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-        Launch demo modal
-        </button>
 
         <!-- Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
