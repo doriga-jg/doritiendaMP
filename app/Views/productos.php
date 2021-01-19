@@ -13,7 +13,7 @@
 
     <section class="d-flex flex-column pt-3 pb-4" style="background-color: #eee;">
         <div class="d-flex flex-column align-self-center justify-content-center w-75 h-auto pr-4 pl-4 pt-3 pb-5 border rounded" style="background-color: white;">
-            <p class="font-weight-bold w-auto">Mostrando todos los productos (6)</p>
+            <p class="font-weight-bold">Mostrando todos los productos (6)</p>
             <div class="d-flex align-self-center pt-4"><?php for ($i=1; $i<=4; $i++) { ?>
                 <div class="d-flex flex-column shadow border border-secondary pl-3 pr-3 pb-3 mr-4" style="border-radius: 10px">
                     <svg xmlns="http://www.w3.org/2000/svg" width="90" height="120" fill="currentColor" class="d-flex align-self-center bi bi-file-earmark-image-fill" viewBox="0 0 16 16">
@@ -64,20 +64,51 @@
 
         <!-- Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-dialog modal-dialog-centered" style="max-width: 1200px;">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <h5 class="modal-title h2" id="exampleModalLabel">Carrito</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
-                    </div>
+                    </div> 
                     <div class="modal-body">
-                        ...
+                        <p class="font-weight-bold">Productos en el carrito</p>
+                        <hr>
+                        <div class="d-flex">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="160" height="200" fill="currentColor" class="d-flex align-self-center bi bi-file-earmark-image-fill pr-4 pl-3" viewBox="0 0 16 16">
+                                <path d="M4 0h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707v5.586l-2.73-2.73a1 1 0 0 0-1.52.127l-1.889 2.644-1.769-1.062a1 1 0 0 0-1.222.15L2 12.292V2a2 2 0 0 1 2-2zm5.5 1.5v2a1 1 0 0 0 1 1h2l-3-3zm-1.498 4a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0z"/>
+                                <path d="M10.564 8.27L14 11.708V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-.293l3.578-3.577 2.56 1.536 2.426-3.395z"/>
+                            </svg>
+                            <div class="d-flex flex-column align-self-center">
+                                <p class="font-weight-bold">Nombre del producto</p>
+                                <p>Este producto es un producto de prueba y esta es la descripción principal del mismo</p>
+                            </div>
+                            <p class="h3 align-self-center" style="margin-left: 120px">$390</p>
+                            <div class="d-flex align-self-center shadow border border-secondary ml-5" style="border-radius: 20px; width: 150px">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                </svg>
+                                <hr style="border: none; border-left: 1px solid hsla(200, 10%, 50%,100); height: 46px; width: 1px; margin: 0;">
+                                <div class="d-flex justify-content-center align-self-center" style="width: 60px"><p style="margin-bottom: 0">1</p></div>
+                                <hr style="border: none; border-left: 1px solid hsla(200, 10%, 50%,100); height: 46px; width: 1px; margin: 0;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                                    <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <hr>
+                        <p class="d-flex justify-content-end h2 mr-4 mt-4 mb-4">Total con envío:   $390</p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button class="btn btn-outline-dark mr-4" style="border-radius: 50px; height: 60px; width: 240px">
+                            Continuar compra
+                            <span class="ml-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
+                                    <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+                                </svg>
+                            </span>
+                        </button>
                     </div>
                 </div>
             </div>
