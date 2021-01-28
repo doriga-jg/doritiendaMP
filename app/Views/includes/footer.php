@@ -35,12 +35,5 @@
                 </div>
             </div>
         </nav>
-        <!-- Suma el checkout, para mostrar el botón de pago en donde se quiera -->
-
-        <script src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js" data-preference-id="<?php echo $preference->id; ?>"> </script>
-        
-        <!-- Integrar MercadoPago.js-->
-        <script src="https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js"></script>
-
     </footer>
 </html>

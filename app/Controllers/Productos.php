@@ -7,7 +7,6 @@ class Productos extends BaseController
     
     public function index()
 	{
-
         //Pedir token y almacenarlo en $token
         $token = MercadoPago\SDK::setAccessToken(DORI_TOKEN);
 
@@ -21,17 +20,58 @@ class Productos extends BaseController
         $item->id= 12345;
         $item->title = 'Doriproducto';
         $item->description = 'Un doriproducto super padriuris';
+        $item->category_id = "others";
         $item->quantity = 1;
-        $item->unit_price = 75.56;
+        $item->currency_id="MXN";
+        $item->unit_price = 390;
 
 
         //Guardamos la info del item en la preferencia
         $preference -> items = array($item);
+
+        //Creamos payer
+        $payer = new MercadoPago\Payer();
+        
+        //Payer info
+        $payer->name = "Joge";
+        $payer->surname = "Pérez";
+        $payer->email = "joge@hotmail.com";
+        $payer->date_created = "2021-01-02T12:58:41.425-04:00";
+        $payer->phone = array(
+            "area_code" => "+52",
+            "number" => "5513944520"
+        );
+        
+        $payer->address = array(
+            "street_name" => "Naranjo",
+            "street_number" => 284,
+            "zip_code" => "06450"
+        );
+
+        //Guardamos la payer info en la preferencia
+        $preference -> payers = array($payer);
+
+        // Pasamos items a string
+        $itemString = implode(',', (array)$item);
+
+        //Establecemos las backurls en urls
+        $urls = array(
+            "failure" => base_url('pago/error?item_data=' . $itemString),
+            "pending" => base_url('pago/pendiente?item_id='.$item->id),
+            "success" => base_url('pago/exitoso?item_id='.$item->id)
+        );
+
+        //Guardamos las backurls
+        $preference -> back_urls = $urls;
+
+        //Guardamos la preferencia
         $preference -> save();
 
         $dataToView = array(
             'preference' => $preference, 
+            'items' => $preference->items, 
         );
+
 
         return view('productos', $dataToView);
 	}
