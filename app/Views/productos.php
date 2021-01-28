@@ -13,7 +13,7 @@
 
     <section class="d-flex flex-column pt-3 pb-4" style="background-color: #eee;">
         <div class="d-flex flex-column align-self-center justify-content-center w-75 h-auto pr-4 pl-4 pt-3 pb-5 border rounded" style="background-color: white;">
-            <p class="font-weight-bold w-auto">Mostrando todos los productos (6)</p>
+            <p class="font-weight-bold">Mostrando todos los productos (6)</p>
             <div class="d-flex align-self-center pt-4"><?php for ($i=1; $i<=4; $i++) { ?>
                 <div class="d-flex flex-column shadow border border-secondary pl-3 pr-3 pb-3 mr-4" style="border-radius: 10px">
                     <svg xmlns="http://www.w3.org/2000/svg" width="90" height="120" fill="currentColor" class="d-flex align-self-center bi bi-file-earmark-image-fill" viewBox="0 0 16 16">

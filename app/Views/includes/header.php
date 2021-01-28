@@ -34,7 +34,7 @@
                     </svg>
                 </div>
                 <div class="col-md-4 offset-md-0">
-                    <a class="navbar-brand" href="#">DORITIENDA</a>
+                    <a class="navbar-brand" href="/inicio">DORITIENDA</a>
                 </div>
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,9 +42,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link active" href="#">Productos <span class="sr-only">(current)</span></a>
-                    <a class="nav-item nav-link active" href="#">Lo más vendido</a>
-                    <a class="nav-item nav-link active" href="#">Para comprar con Mercado Pago</a>
+                    <a class="nav-item nav-link active" href="/productos">Productos <span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link active" href="/productos">Lo más vendido</a>
+                    <a class="nav-item nav-link active" href="/productos">Para comprar con Mercado Pago</a>
                 </div>
             </div>
             <form class="form-inline">
