@@ -1,62 +1,56 @@
-<?php
-namespace App\Controllers;
+<?php   namespace App\Controllers;
 
-use MercadoPago\Sdk;
+use MercadoPago;
 
 class Productos extends BaseController
 {
-    function index() {
-        return view('productos');;
-    }
+    
+    public function index()
+	{
 
-    public function pagarMp()
-    {
-        MercadoPago\SDK::setAccessToken('PROD_ACCESS_TOKEN');
+        //Pedir token y almacenarlo en $token
+        $token = MercadoPago\SDK::setAccessToken(DORI_TOKEN);
 
-        // Crea un objeto de preferencia
+        //Crear objeto de preferencia y almacenarlo en $preference
         $preference = new MercadoPago\Preference();
 
-        $_POST['articulo'] = array(
-            'id' => 56,
-            'titulo' => 'Producto',
-            'descripcion' => 'Descripcion de mi producto',
-            'cantidad' => 1,
-            'precio_unitario' => 75.56,
-        );
-        // Crea un ítem en la preferencia
+        //Creamos ítem
+        $item = new MercadoPago\Item();
 
-        $articulo = $_POST['articulo'];
+        //Información del ítem
+        $item->id= 12345;
+        $item->title = 'Doriproducto';
+        $item->description = 'Un doriproducto super padriuris';
+        $item->quantity = 1;
+        $item->unit_price = 75.56;
 
-        $producto = MYSQL->findByID($articulo['id']);
 
-        if (!$producto) {
-            # code...
-        } else {
-            $item = new MercadoPago\Item();
-            $item->title = $articulo->titulo;
-            $item->quantity = $articulo->quantity;
-            $item->unit_price = $articulo->precio_unitario;
-            $preference->items = array($item);
-            $respuestaPreferencia = $preference->save();
+        //Guardamos la info del item en la preferencia
+        $preference -> items = array($item);
+        $preference -> save();
 
-            $urlParaPago = $respuestaPreferencia->sandbox_init_point;
-
-            
-        }
-
-        $respuestaCobro = MercadoPago->cobro($cobro);
-        
         $dataToView = array(
-            'detalles_de_compra' => $respuestaCobro
+            'preference' => $preference, 
         );
 
-        return view('compra_finalizada', $dataToView);
+        return view('productos', $dataToView);
+	}
 
 
-        $detalles_de_compra->id
+    function preferenceMP(){
 
+    }
 
+    function paymentMP(){
         
+        //De nuevo se pide el token de MP
+        $token = MercadoPago\SDK::setAccessToken(DORI_TOKEN);
+
+        //Creamos un objeto de pago y asignamos su infomación con valores fijos
+        $payment = new MercadoPago\Payment();
+        $payment -> transaction_amount = 390;
+        $payment -> token = 'CARD_TOKEN';
+
     }
 
 }

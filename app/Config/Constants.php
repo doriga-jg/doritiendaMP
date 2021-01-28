@@ -75,3 +75,8 @@ defined('EXIT_USER_INPUT')     || define('EXIT_USER_INPUT', 7); // invalid user 
 defined('EXIT_DATABASE')       || define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      || define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      || define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
+
+/**
+ *  Bloque de constantes personalizadas
+ */
+defined('DORI_TOKEN') || define('DORI_TOKEN', 'TEST-6400950492760841-012801-91e89998789b2b8883330c84ff71103d-698071882'); // highest automatically-assigned error code
