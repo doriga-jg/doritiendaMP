@@ -27,7 +27,6 @@ class Pago extends BaseController
     {
         return view('pago/exitoso');
     }
-
+    
 	//--------------------------------------------------------------------
-
 }
