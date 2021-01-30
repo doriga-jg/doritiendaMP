@@ -7,7 +7,7 @@
                     </svg>
                 </div>
                 <div class="col-md-4 offset-md-0">
-                    <a class="navbar-brand" href="/inicio">DORITIENDA</a>
+                    <a class="navbar-brand" href="/inicio">DORITIENDA: Tienda e-commerce México</a>
                 </div>
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">

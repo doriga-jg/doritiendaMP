@@ -4,7 +4,7 @@ use MercadoPago;
 
 class Productos extends BaseController
 {
-    
+
     public function index()
 	{
         //Pedir token y almacenarlo en $token
@@ -24,7 +24,6 @@ class Productos extends BaseController
         $item->quantity = 1;
         $item->currency_id="MXN";
         $item->unit_price = 390;
-
 
         //Guardamos la info del item en la preferencia
         $preference -> items = array($item);
@@ -72,10 +71,8 @@ class Productos extends BaseController
             'items' => $preference->items, 
         );
 
-
         return view('productos', $dataToView);
 	}
-
 
     function preferenceMP(){
 
